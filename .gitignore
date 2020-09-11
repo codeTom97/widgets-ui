@@ -17,5 +17,4 @@ npm-debug.log
 *.log
 examples/dist/
 yarn-error.log
-test/unit/coverage
 .vscode

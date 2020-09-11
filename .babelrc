@@ -1,0 +1,13 @@
+{
+    "presets": [
+        "@babe/preset-env"
+    ],
+    "plugins": [
+        "syntax-dynamic-import",
+        "transform-class-properties",
+        "transform-es5-property-mutators",
+        "transform-object-rest-spread",
+        "transform-runtime",
+        "transform-vue-jsx"
+    ]
+}
