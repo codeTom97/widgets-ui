@@ -1,0 +1,9 @@
+{
+  "name": "widgets-ui",
+  "version": "0.0.1",
+  "description": "a easy developer of Vue",
+  "main": "index.js",
+  "scripts": {},
+  "author": "codeTom97",
+  "license": "ISC"
+}
