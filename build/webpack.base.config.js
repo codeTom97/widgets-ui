@@ -6,7 +6,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const package = require('../package.json');
+const pkg = require('../package.json');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
@@ -18,7 +18,7 @@ const config = {
     module: {
         rules: [
             {
-                test: "/\.vue$/",
+                test: /\.vue$/,
                 loader: "vue-loader",
                 options: {
                     loaders: {
@@ -51,7 +51,7 @@ const config = {
                 exclude: /node_modules/
             },
             {
-                test: "/\.css$/",
+                test: /\.css$/,
                 loaders: [
                     {
                         loader: "style-loader",
@@ -71,7 +71,7 @@ const config = {
                 ],
             },
             {
-                test: "/\.less$/",
+                test: /\.less$/,
                 loaders: [
                     "style-loader",
                     "css-loader",
@@ -105,7 +105,7 @@ const config = {
     plugins: [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.DefinePlugin({
-            "process.env.VERSION": `${package.version}`
+            'VERSION' : `'${pkg.version}'`
         })
     ]
 }

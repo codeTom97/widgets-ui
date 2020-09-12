@@ -13,7 +13,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');  // 错�
 const webpackBase = require('./webpack.base.config');
 
 
-const HOST = 'localtion';
+const HOST = '127.0.0.1';
 const PORT = '8080';
 
 
@@ -23,7 +23,7 @@ const devConfig = merge(webpackBase, {
 
     // 入口配置
     entry: {
-        main: "./examples/index",
+        main: "./examples/app.js",
         vendors: ["vue", "vue-router"]
     },
 
@@ -36,25 +36,27 @@ const devConfig = merge(webpackBase, {
     },
 
     devServer: {
-        hot: true,
         host: HOST,
         port: PORT,
-        overlay: { warnings: false, errors: true },     // 开启错误提醒
-        publicPath: "/",                                // 打包文件可在浏览器中访问
-        quiet: true,                                    // 开启后控制台不在输出打包信息
+        hot: true,
+        contentBase: path.join(__dirname, "../examples/dist"),  // 告诉服务器从哪里提供内容
+        clientLogLevel: "error",                                // 客户端控制台输出
+        overlay: { warnings: false, errors: true },             // 开启错误提醒
+        publicPath: "/",                                        // 打包文件可在浏览器中访问
+        quiet: true,                                            // 开启后控制台不在输出打包信息
     },
 
     // 快速路径
     resolve: {
         alias: {
-          codeui: "../../src/index",
+          "widgets-ui": "../src/index.js",
           vue: "vue/dist/vue.esm.js"
         }
     },
 
     // 插件配置
     plugins: [
-        // new VueLoaderPlugin(),
+        new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin(),  // 热重载
         new HTMLPlugin({
             inject: true,
